@@ -1,0 +1,124 @@
+{% extends 'header.html' %} {% block title %}My Blog{% endblock %} {% block
+styles %}
+<style>
+  .post-preview {
+    margin-bottom: 40px; /* Adjust as needed */
+  }
+
+  .post-title {
+    font-size: 2.5rem; /* Adjust as needed */
+    margin-bottom: 10px; /* Adjust as needed */
+  }
+
+  .post-subtitle {
+    font-size: 1.5rem; /* Adjust as needed */
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+
+  .post-meta {
+    font-size: 0.9rem; /* Adjust as needed */
+    color: #777; /* Adjust color as needed */
+  }
+
+  /* Style pagination */
+  .pagination {
+    justify-content: center;
+  }
+
+  .page-item {
+    display: inline-block;
+    margin-right: 10px; /* Adjust spacing as needed */
+  }
+</style>
+{% endblock %}
+<!-- Page Header-->
+{% block content %} {% if logged_in and not current_user.is_admin %}
+<header class="masthead" style="background-image: url({{ wallpaper }})">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>
+            Welcome to Icon Designers Blog, {{
+            current_user.name.title().split()[0] }}
+          </h1>
+          <span class="subheading"> "what do you want to explore?" </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% elif logged_in and current_user.is_admin %}
+<header
+  class="masthead"
+  style="
+    background-image: url('https://images.unsplash.com/photo-1523875194681-bedd468c58bf?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=jeshoots-com-fzOITuS1DIQ-unsplash.jpg');
+  "
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Welcome back, Boss</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% else %}
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/main-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Step into the Spotlight</h1>
+          <span class="subheading"> "Ignite Your Curiosity." </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endif %}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      {% for post in posts %}
+      <!-- Post preview-->
+      <div class="post-preview">
+        <a href="{{ url_for('post', index=post['id']) }}">
+          <h2 class="post-title">{{ post['title'] }}</h2>
+          <h3 class="post-subtitle">{{ post['subtitle'] }}</h3>
+        </a>
+        <p class="post-meta">
+          Posted by {% if post.author.name == 'Rahul Haque' %}
+          <a href="{{ url_for('about') }}">{{ post.author.name }}</a>
+          {% else %}
+          <a href="#">{{ post.author.name }}</a>
+          {% endif %} {{ post['date'] }} {% if current_user.is_admin %}
+          <a href="{{ url_for('delete_post', post_id=post.id) }}">🗑️</a>
+          {% endif %}
+        </p>
+      </div>
+      {% endfor %}
+
+      <!-- Divider-->
+      <hr class="my-4" />
+
+      <!-- Pager-->
+      {% if current_user.is_admin %}
+      <div class="d-flex justify-content-end mb-4">
+        <a
+          class="btn btn-primary text-uppercase"
+          href="{{ url_for('new_post') }}"
+          >CREATE NEW POST →</a
+        >
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %} {% endblock %}

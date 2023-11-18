@@ -1,0 +1,182 @@
+{% extends 'header.html' %} {% block title %}About me{% endblock %} {% block
+styles %}
+<style>
+  .content-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    padding: 40px;
+    transition: box-shadow 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out; /* Added fade-in animation */
+  }
+
+  .content-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .content-section h1,
+  .content-section h2,
+  .content-section p,
+  .content-section li {
+    opacity: 0; /* Initially set to opacity 0 for fade-in animation */
+    animation: fadeInUp 1s ease-in-out forwards; /* Added fade-in-up animation */
+  }
+
+  .content-section h1 {
+    color: #007bff;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+
+  .content-section p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #495057;
+    margin-bottom: 20px;
+  }
+
+  .content-section h2 {
+    color: #007bff;
+    font-size: 2.2rem;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .content-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 12px;
+  }
+
+  .content-section li {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+
+  .call-to-action {
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .call-to-action:hover {
+    background-color: #0056b3;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<!-- Page Header -->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/about-bg.jpg')"
+>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading text-center">
+          <h1>So Are We??</h1>
+          <span class="subheading">What do we do?.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="mb-4">
+  <div class="container content-section">
+    <h1 class="mb-4">About Us</h1>
+    <p>
+      Welcome to Icon designs and Engineering Consultants, where innovation
+      meets inspiration in the world of architecture. With a legacy of
+      creativity and a commitment to excellence, we are dedicated to shaping
+      spaces that not only stand the test of time but also elevate the human
+      experience.
+    </p>
+
+    <p>
+      At Icon designs and Engineering Consultants, we believe in the power of
+      design to transform environments. Our team of visionary architects,
+      designers, and professionals collaborate seamlessly to bring forth
+      cutting-edge solutions tailored to meet the unique needs of our clients.
+      From concept to construction, we blend artistry with functionality,
+      creating spaces that inspire and endure.
+    </p>
+
+    <h2 class="mt-4">Our Approach:</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <strong>Collaborative Creativity:</strong>
+        <p>
+          We believe that the best designs emerge from collaboration. Our team
+          works closely with clients to understand their vision, ensuring that
+          every project is a true reflection of their aspirations.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <strong>Innovation and Technology:</strong>
+        <p>
+          Embracing the latest advancements in technology, we integrate
+          innovative solutions into our designs. This not only enhances the
+          aesthetic appeal but also ensures efficiency and sustainability.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <strong>Sustainability:</strong>
+        <p>
+          We are committed to creating spaces that respect the environment. Our
+          designs incorporate sustainable practices, materials, and
+          energy-efficient solutions to minimize our ecological footprint.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <strong>Quality Craftsmanship:</strong>
+        <p>
+          Excellence is at the core of everything we do. From the initial
+          sketches to the final touches, we uphold the highest standards of
+          craftsmanship, ensuring that each project is a testament to our
+          dedication to quality.
+        </p>
+      </div>
+    </div>
+
+    <p>
+      Whether you're envisioning a residential masterpiece, a commercial hub, or
+      a community landmark, Icon Designs is your partner in turning dreams into
+      architectural reality. Explore our portfolio to witness the fusion of art
+      and science, and let us embark on a journey to redefine your space.
+    </p>
+
+    <p>
+      Welcome to a world where architecture goes beyond buildings—it transforms
+      lives. Welcome to Icon designs and Engineering Consultants
+    </p>
+  </div>
+</main>
+
+{% include 'footer.html' %} {% endblock %}
